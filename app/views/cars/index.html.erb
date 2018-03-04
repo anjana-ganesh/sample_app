@@ -1,0 +1,26 @@
+<h1>Car</h1>
+<table>
+    <thread>
+        <tr>
+            <th>Brand Name</th>
+            <th>Model</th>
+            <th>Registration Number</th>
+            <th>Colour</th>
+        </tr>
+    </thread>
+<tbody>
+    <% @cars.each do |car| %>
+        <tr>
+            <th><%= car.brand %></th>
+            <th><%= car.model %></th>
+            <th><%= car.registration_number %></th>
+            <th><%= car.colour %></th>
+            <th><%= link_to 'Show', car_path(car) %></th>
+            <th><%= link_to 'Edit', edit_car_path(car) %></th>
+            <th><%= link_to 'Destroy', car_path(car) ,method: :delete,data: {confirm: 'Are you sure?'} %></th>
+        </tr>
+    <% end %>
+</tbody>
+</table>
+<br>
+<%= link_to 'New Car', new_car_path %><br>

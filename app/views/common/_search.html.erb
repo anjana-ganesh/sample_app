@@ -1,0 +1,17 @@
+<input type="text" placeholder="<%= placeholder%>" style="margin-top: 10px" id="search">
+
+<script>
+var searchTimer;
+$("#search").keyup(function(){
+    clearTimeout(searchTimer);
+    searchTimer= setTimeout(doSearch,500);
+});
+
+function doSearch(){
+    $.ajax({
+        url :'<%= search_url%>',
+        type:'GET',
+        data:{ search_for:$('#search').val()}
+    });
+    }
+</script>

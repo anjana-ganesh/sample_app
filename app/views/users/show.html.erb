@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @user.name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+<p>
+  <strong>Password:</strong>
+  <%= @user.password %>
+</p>
+
+<p>
+  <strong>Conform password:</strong>
+  <%= @user.conform_password %>
+</p>
+
+<% if (@user.profile.present?) %>
+  <%= link_to 'Edit Profile', edit_user_profile_path(@user, @user.profile) %>
+<% else %>
+  <%= link_to 'Create Profile', new_user_profile_path(@user) %>
+<% end %>
+<br>
+<%= link_to 'address Page', user_addresses_path(@user) %><br>
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>

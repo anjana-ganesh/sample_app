@@ -1,0 +1,27 @@
+<h1>Address</h1>
+<table>
+    <thread>
+        <tr>
+            <th>Name</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Country</th>
+        </tr>
+    </thread>
+<tbody>
+    <% @addresses.each do |address| %>
+        <tr>
+            <th><%= address.name %></th>
+            <th><%= address.city %></th>
+            <th><%= address.state %></th>
+            <th><%= address.country %></th>
+            <th><%= link_to 'Show', user_address_path(address.user, address) %></th>
+            <th><%= link_to 'Edit', edit_user_address_path(address.user, address) %></th>
+            <th><%= link_to 'Destroy', user_address_path(address.user, address) ,method: :delete,data: {confirm: 'Are you sure?'} %></th>
+        </tr>
+    <% end %>
+</tbody>
+</table>
+<br>
+<%= link_to 'New Address', new_user_address_path(@user) %><br>
+<%= link_to 'Users', @user %>

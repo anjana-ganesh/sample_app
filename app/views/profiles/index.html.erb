@@ -1,0 +1,26 @@
+<h1>Profile</h1>
+<table>
+    <thread>
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Sex</th>
+            <th>Phone Number</th>
+        </tr>
+    </thread>
+<tbody>
+    <% @profiles.each do |profile| %>
+        <tr>
+            <th><%= profile.name %></th>
+            <th><%= profile.age %></th>
+            <th><%= profile.sex %></th>
+            <th><%= profile.phone_number %></th>
+            <th><%= link_to 'Show', user_profile_path(profile.user,profile) %></th>
+            <th><%= link_to 'Edit', edit_user_profile_path(profile.user,profile) %></th>
+            <th><%= link_to 'Destroy', user_profile_path(profile.user,profile) ,method: :delete,data: {confirm: 'Are you sure?'} %></th>
+        </tr>
+    <% end %>
+</tbody>
+</table>
+<br>
+<%= link_to 'New Profile', new_user_profile_path(@user) %>

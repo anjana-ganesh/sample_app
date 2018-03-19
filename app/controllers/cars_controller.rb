@@ -1,8 +1,13 @@
 class CarsController < ApplicationController
+    respond_to :html, :json, :js
     before_action :set_car, only:[:show, :edit, :update, :destroy]
     def index
-        @cars= Car.all
-    end
+        if params[:search_for].present?
+          @cars = Car.search_for(params[:search_for])
+        else
+          @cars = Car.all
+        end
+      end
 
     def show
     end
@@ -20,7 +25,7 @@ class CarsController < ApplicationController
             if @car.save
                 format.html{redirect_to @car}
             else
-                format.hrml{render:new}
+                format.html{render:new}
             end
         end
     end
